@@ -32,3 +32,30 @@ cp .env.example .env
 
 # 4. Deploy example token
 forge script script/DeploySimpleToken.s.sol:DeploySimpleToken --rpc-url $BASE_RPC_URL --broadcast --verify -vvvv
+
+├── script/              # Deployment scripts
+├── src/                 # Smart contracts
+├── test/                # Foundry tests
+├── frontend/            # (optional) Next.js + wagmi frontend
+├── .env.example         # Example environment variables
+└── foundry.toml         # Foundry configuration
+
+# .env
+PRIVATE_KEY=0x...
+BASE_RPC_URL=https://mainnet.base.org
+ETHERSCAN_API_KEY=your_basescan_api_key   # for --verify
+
+# Run all tests
+forge test
+
+# Run specific test
+forge test --match-test testTokenMint
+
+# Deploy & verify in one command
+forge script script/DeploySimpleToken.s.sol --rpc-url $BASE_RPC_URL --broadcast --verify
+
+# Format code
+forge fmt
+
+# Update dependencies
+forge update
